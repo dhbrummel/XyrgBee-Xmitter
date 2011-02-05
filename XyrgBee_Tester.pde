@@ -338,7 +338,7 @@ void setup() {
   xmit_state(state_70B);
   xmit_state(state_77W);
   delay(segDelay);
-
+ 
   // blank LEDs
   xmit_state(blankLEDs);
   delay(segDelay);
@@ -411,6 +411,16 @@ void setup() {
   // blank LEDs
   xmit_state(blankLEDs);
   
+  // set xmit LED to OFF to signal test is finished
+  #if xmtLED == 3
+   analogWrite(ledStateR, 0);
+   analogWrite(ledStateG, 0);
+   analogWrite(ledStateB, 0);
+  #endif
+  #if xmtLED == 1
+   digitalWrite(ledXmit, LOW);
+  #endif
+
 } // end of setup()
 
 void loop() {
